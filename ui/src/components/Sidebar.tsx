@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import { Info, MessageCircle } from 'lucide-react'
+import { Github, Info, Mail, MessageCircle } from 'lucide-react'
 import { SITE } from '../lib/site'
 
 const navItems = [
@@ -45,10 +45,34 @@ export default function Sidebar() {
         })}
       </nav>
 
-      <div className="px-2 text-xs leading-relaxed text-slate-400">
-        Built by <span className="font-medium text-slate-500">{SITE.author}</span>
-        <br />
-        Open source · MIT
+      <div className="rounded-lg border border-slate-100 bg-slate-50 p-3">
+        <div className="flex items-center gap-2.5">
+          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-600 text-xs font-bold text-white">
+            {SITE.authorInitials}
+          </span>
+          <div className="leading-tight">
+            <div className="text-sm font-semibold text-slate-800">{SITE.author}</div>
+            <div className="text-xs text-slate-400">{SITE.authorRole}</div>
+          </div>
+        </div>
+        <div className="mt-2.5 flex items-center gap-1.5">
+          <a
+            href={SITE.githubUrl}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="GitHub profile"
+            className="flex items-center gap-1 rounded-md border border-slate-200 bg-white px-2 py-1 text-xs text-slate-600 transition hover:border-brand-300 hover:text-brand-700"
+          >
+            <Github size={13} /> GitHub
+          </a>
+          <a
+            href={`mailto:${SITE.email}`}
+            aria-label="Email"
+            className="flex items-center gap-1 rounded-md border border-slate-200 bg-white px-2 py-1 text-xs text-slate-600 transition hover:border-brand-300 hover:text-brand-700"
+          >
+            <Mail size={13} /> Email
+          </a>
+        </div>
       </div>
     </aside>
   )

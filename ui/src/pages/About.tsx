@@ -5,6 +5,7 @@ import {
   Github,
   KeyRound,
   Layers,
+  Mail,
   ScrollText,
   ShieldCheck,
   Terminal,
@@ -64,11 +65,14 @@ export default function About() {
       {/* Intro */}
       <section className="mb-8">
         <span className="inline-block rounded-full bg-brand-50 px-3 py-1 text-xs font-medium text-brand-700">
-          Full-stack AI template
+          Full-stack AI template · portfolio piece
         </span>
         <h2 className="mt-3 text-2xl font-semibold tracking-tight text-slate-900">
           Built to show how I structure code — not just that it runs
         </h2>
+        <p className="mt-2 text-sm text-slate-500">
+          By <span className="font-medium text-slate-700">{SITE.author}</span> · {SITE.authorRole}
+        </p>
         <p className="mt-3 max-w-2xl leading-relaxed text-slate-600">
           This is a small, end-to-end AI app: a FastAPI backend with a provider-agnostic LLM
           client and a typed React frontend. It is intentionally compact, but every layer follows
@@ -93,6 +97,13 @@ export default function About() {
           >
             <FileCode2 size={16} />
             Open the API docs
+          </a>
+          <a
+            href={`mailto:${SITE.email}`}
+            className="flex items-center gap-2 rounded-lg border border-slate-200 px-4 py-2 text-sm font-medium text-slate-700 transition hover:border-slate-300"
+          >
+            <Mail size={16} />
+            Get in touch
           </a>
         </div>
       </section>
@@ -154,6 +165,36 @@ export default function About() {
           full request flow in action. The backend runs fully offline against a local Ollama model,
           or against any OpenAI-compatible provider — no code changes, just configuration.
         </p>
+      </section>
+
+      {/* Author */}
+      <section className="mt-8 flex flex-col items-center gap-4 border-t border-slate-200 pt-8 text-center sm:flex-row sm:text-left">
+        <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-brand-600 text-lg font-bold text-white">
+          {SITE.authorInitials}
+        </span>
+        <div className="flex-1">
+          <div className="text-base font-semibold text-slate-900">{SITE.author}</div>
+          <div className="text-sm text-slate-500">{SITE.authorRole}</div>
+          <p className="mt-1 text-sm text-slate-500">
+            This template is part of my portfolio. If you're hiring or want to talk shop, reach out.
+          </p>
+        </div>
+        <div className="flex gap-2">
+          <a
+            href={SITE.githubUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center gap-1.5 rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-700 transition hover:border-brand-300 hover:text-brand-700"
+          >
+            <Github size={15} /> GitHub
+          </a>
+          <a
+            href={`mailto:${SITE.email}`}
+            className="flex items-center gap-1.5 rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-700 transition hover:border-brand-300 hover:text-brand-700"
+          >
+            <Mail size={15} /> Email
+          </a>
+        </div>
       </section>
     </div>
   )
