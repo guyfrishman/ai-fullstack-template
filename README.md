@@ -1,5 +1,10 @@
 # AI Fullstack Template
 
+[![CI](https://github.com/guyfrishman/ai-fullstack-template/actions/workflows/ci.yml/badge.svg)](https://github.com/guyfrishman/ai-fullstack-template/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/)
+[![React 18](https://img.shields.io/badge/react-18-61dafb.svg)](https://react.dev/)
+
 A clean, production-shaped starting point for AI applications: a **FastAPI**
 backend with a provider-agnostic LLM client, and a **React + Vite + TypeScript +
 Tailwind** frontend with a working chat UI. Runs locally with one command, and
@@ -142,7 +147,9 @@ docs/
 ├── AGENTS.md         # how AI coding agents should work here
 ├── conventions/      # how the code is written (authoritative)
 ├── decisions/        # ADRs — why it's built this way (append-only)
-└── services/         # per-unit reference for api and ui
+├── services/         # per-unit reference + example/planned services
+├── patterns/         # worked examples of extending the template
+└── infrastructure/   # CI/CD, containers, deployment, observability
 ```
 
 ### How to leverage it
@@ -190,6 +197,17 @@ coherent as it grows.
 the non-obvious calls — why the LLM client is provider-agnostic, why history is
 server-side, why auth is open by default — each with the alternatives that were
 weighed.
+
+**Scaling it up?** [`docs/patterns/`](docs/patterns/) has worked examples of
+extending the template behind its existing interfaces — a Redis or Postgres
+session store, a RAG vector-store repository — and
+[`docs/services/`](docs/services/) sketches how it grows into a small
+multi-service architecture (a background worker, a retrieval API).
+
+**Shipping it?** [`docs/infrastructure/`](docs/infrastructure/) covers what's
+wired up (a GitHub Actions CI pipeline that tests the API and builds the UI) and
+the suggested path to production — container strategy, deployment targets
+(managed containers, Kubernetes), CD, and observability.
 
 ## License
 

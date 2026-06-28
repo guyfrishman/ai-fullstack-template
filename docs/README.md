@@ -17,9 +17,11 @@ the answer is here.
 
 | Folder | What's in it |
 |---|---|
-| **[conventions/](conventions/)** | How we write code. Code style, routers, repositories, logging, config, LLM usage, frontend, testing, git. Authoritative. |
+| **[conventions/](conventions/)** | How we write code. Code style, routers, repositories, logging, config, LLM usage, frontend, testing, git, work protocol. Authoritative. |
 | **[decisions/](decisions/)** | Architecture Decision Records — *why* we chose what we chose. Append-only; never rewrite history. |
-| **[services/](services/)** | One file per deployable unit (`api`, `ui`): what it does, how to run it, quirks. |
+| **[services/](services/)** | One file per deployable unit (`api`, `ui`), plus example/planned services and a drop-in template. |
+| **[patterns/](patterns/)** | Worked examples of extending the template — Redis/Postgres session stores, a RAG vector-store repository. |
+| **[infrastructure/](infrastructure/)** | CI/CD, containers, deployment options, observability — what's built and the suggested production path. |
 | **screenshots/** | Images used by the top-level README. |
 
 ## How to use this with coding agents
