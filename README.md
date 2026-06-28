@@ -14,7 +14,14 @@ ai-fullstack-template/
 └── README.md
 ```
 
-> _Screenshot placeholder — add a screenshot of the Chatbot page here._
+![Chatbot page](docs/screenshots/chatbot.png)
+
+<details>
+<summary>More screenshots</summary>
+
+![About page](docs/screenshots/about.png)
+
+</details>
 
 ## Why this template
 
@@ -117,6 +124,16 @@ cd api && uv run pytest
 ```
 
 Tests mock the LLM client, so they run with no network and no API key.
+
+## Documentation
+
+In-depth docs for contributors and coding agents live in [`docs/`](docs/):
+
+- [`docs/onboarding.md`](docs/onboarding.md) — get productive in under an hour
+- [`docs/conventions/`](docs/conventions/) — how the code is written (routers, repositories, logging, config, LLM usage, frontend, testing)
+- [`docs/decisions/`](docs/decisions/) — architecture decision records (the *why*)
+- [`docs/services/`](docs/services/) — per-unit reference for `api` and `ui`
+- [`docs/AGENTS.md`](docs/AGENTS.md) — how AI coding agents should work here (the root [`CLAUDE.md`](CLAUDE.md) points to it)
 
 ## License
 
