@@ -127,13 +127,49 @@ Tests mock the LLM client, so they run with no network and no API key.
 
 ## Documentation
 
-In-depth docs for contributors and coding agents live in [`docs/`](docs/):
+This repo treats documentation as a system, not an afterthought. Everything
+cross-cutting lives in [`docs/`](docs/) and is structured so a human or an AI
+agent can get the answer — and the *reasoning* behind it — in under a minute.
 
-- [`docs/onboarding.md`](docs/onboarding.md) — get productive in under an hour
-- [`docs/conventions/`](docs/conventions/) — how the code is written (routers, repositories, logging, config, LLM usage, frontend, testing)
-- [`docs/decisions/`](docs/decisions/) — architecture decision records (the *why*)
-- [`docs/services/`](docs/services/) — per-unit reference for `api` and `ui`
-- [`docs/AGENTS.md`](docs/AGENTS.md) — how AI coding agents should work here (the root [`CLAUDE.md`](CLAUDE.md) points to it)
+```
+docs/
+├── onboarding.md     # day-1 reading list, get productive in < 1 hour
+├── AGENTS.md         # how AI coding agents should work here
+├── conventions/      # how the code is written (authoritative)
+├── decisions/        # ADRs — why it's built this way (append-only)
+└── services/         # per-unit reference for api and ui
+```
+
+### How to leverage it
+
+**New to the project?** Start at [`docs/onboarding.md`](docs/onboarding.md) — it
+gives you the mental model, the 5-minute run, and a reading order. Then skim
+[`docs/conventions/`](docs/conventions/) (they're short) and read the
+[`docs/services/`](docs/services/) file for the part you're touching.
+
+**Using a coding agent (Claude Code, Cursor, …)?** The repo is built to be
+agent-friendly:
+
+- The root [`CLAUDE.md`](CLAUDE.md) is read automatically by Claude Code and
+  points the agent at the docs.
+- [`docs/AGENTS.md`](docs/AGENTS.md) sets the house rules — keep layers honest,
+  swap behind interfaces, verify don't assert — plus a clear "definition of done."
+- Point any LLM at the relevant [`docs/conventions/`](docs/conventions/) file and
+  it will produce changes that match the existing style. Try, for example:
+  > "Read `docs/conventions/routers.md` and `docs/conventions/repositories.md`,
+  > then add a `GET /api/v1/chat/{session_id}/history` endpoint that returns the
+  > stored messages, following the existing patterns."
+
+**Extending the template?** Conventions are authoritative — if code disagrees
+with a convention, either the code is wrong or the convention changed. When you
+change a rule, record *why* as a new ADR in [`docs/decisions/`](docs/decisions/)
+(append-only) and update the convention. That trail is what keeps the codebase
+coherent as it grows.
+
+**Understanding a design choice?** [`docs/decisions/`](docs/decisions/) explains
+the non-obvious calls — why the LLM client is provider-agnostic, why history is
+server-side, why auth is open by default — each with the alternatives that were
+weighed.
 
 ## License
 
