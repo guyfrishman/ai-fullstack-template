@@ -1,7 +1,8 @@
 # Working in this repo as a coding agent
 
-This file tells AI coding agents (Claude Code, Cursor, Windsurf, etc.) how to
-work here. The repo root `CLAUDE.md` points to this file.
+This file tells AI coding agents (Claude Code, Cursor, Windsurf, Copilot, Aider,
+etc.) how to work here. It is tool-agnostic — the top-level README summarizes
+these rules too.
 
 ## Before you start
 

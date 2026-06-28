@@ -10,7 +10,6 @@ ai-fullstack-template/
 ├── api/                 # FastAPI service (package: app)
 ├── ui/                  # React + Vite + TypeScript + Tailwind
 ├── docs/                # onboarding, conventions, ADRs, per-service reference
-├── CLAUDE.md            # entry point for AI coding agents → points to docs/
 ├── docker-compose.yml   # api + ui, one command
 ├── LICENSE              # MIT
 └── README.md
@@ -18,7 +17,7 @@ ai-fullstack-template/
 
 The [`docs/`](docs/) folder is a first-class part of this template: it captures
 how the code is written and *why* it's built this way, for both human
-contributors and coding agents. See [Documentation](#documentation) below.
+contributors and AI coding agents. See [Documentation](#documentation) below.
 
 ![Chatbot page](docs/screenshots/chatbot.png)
 
@@ -153,15 +152,30 @@ gives you the mental model, the 5-minute run, and a reading order. Then skim
 [`docs/conventions/`](docs/conventions/) (they're short) and read the
 [`docs/services/`](docs/services/) file for the part you're touching.
 
-**Using a coding agent (Claude Code, Cursor, …)?** The repo is built to be
-agent-friendly:
+**Using a coding agent?** The repo is built to be worked on by any AI coding
+assistant (Claude Code, Cursor, Windsurf, Copilot, Aider, …) — nothing here is
+tied to a specific tool. To get changes that match the existing style, point the
+agent at the docs and hold it to the house rules below:
 
-- The root [`CLAUDE.md`](CLAUDE.md) is read automatically by Claude Code and
-  points the agent at the docs.
-- [`docs/AGENTS.md`](docs/AGENTS.md) sets the house rules — keep layers honest,
-  swap behind interfaces, verify don't assert — plus a clear "definition of done."
-- Point any LLM at the relevant [`docs/conventions/`](docs/conventions/) file and
-  it will produce changes that match the existing style. Try, for example:
+- Read [`docs/AGENTS.md`](docs/AGENTS.md) first, then the relevant
+  [`docs/conventions/`](docs/conventions/) files and the
+  [`docs/services/`](docs/services/) file for the part being changed.
+- **House rules** (the short version of `docs/AGENTS.md`):
+  - **Thin layers** — routers delegate to services; services orchestrate;
+    repositories own I/O. Don't cross those lines.
+  - **Talk to the model only through `LlmRepository`** and to storage only
+    through `SessionRepository`; the provider and datastore are swappable behind
+    them.
+  - **`@log_activity` on functions in the request path**; never `print`.
+  - **Config is one typed `Settings` object** from env vars; secrets never go in
+    code or the `/settings` response.
+  - **Verify, don't assert** — `uv run pytest` and `npm run build` stay green;
+    run the thing you changed.
+  - **No proprietary or cloud-coupled content** — this is a public template.
+- Most assistants auto-load a context file from the repo root; if yours does,
+  copy these rules into the file it expects (e.g. `AGENTS.md`, or a tool-specific
+  one) so they're picked up automatically.
+- Example prompt to try:
   > "Read `docs/conventions/routers.md` and `docs/conventions/repositories.md`,
   > then add a `GET /api/v1/chat/{session_id}/history` endpoint that returns the
   > stored messages, following the existing patterns."

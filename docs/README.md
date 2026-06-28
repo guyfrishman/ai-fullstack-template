@@ -10,7 +10,7 @@ the answer is here.
 
 - **New contributors** — start with [`onboarding.md`](onboarding.md).
 - **Coding agents** — read [`AGENTS.md`](AGENTS.md) first, then the relevant
-  `conventions/` files. The repo root also has a `CLAUDE.md` that points here.
+  `conventions/` files. The top-level README also summarizes the house rules.
 - **Reviewers / the curious** — `decisions/` explains the *why* behind the design.
 
 ## What lives where
@@ -26,10 +26,12 @@ the answer is here.
 
 This repo is designed to be agent-friendly:
 
-- **Claude Code** — `CLAUDE.md` at the repo root is read automatically and points
-  here. At session start, an agent should read `docs/AGENTS.md` and the
-  `conventions/` files relevant to the change.
-- **Cursor / Windsurf** — open the repo; the same docs apply.
+- **Any AI coding assistant** (Claude Code, Cursor, Windsurf, Copilot, Aider, …)
+  — at session start, have it read [`AGENTS.md`](AGENTS.md) and the
+  `conventions/` files relevant to the change. Nothing here is tool-specific.
+- **Auto-loaded context** — if your tool reads a context file from the repo root,
+  copy the house rules (top-level README → Documentation) into the file it
+  expects so they're picked up automatically.
 - **Any LLM** — paste the relevant `conventions/*.md` file into context.
 
 ## Maintainer notes
