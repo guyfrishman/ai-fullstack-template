@@ -9,10 +9,16 @@ works fully offline against a local model.
 ai-fullstack-template/
 ├── api/                 # FastAPI service (package: app)
 ├── ui/                  # React + Vite + TypeScript + Tailwind
+├── docs/                # onboarding, conventions, ADRs, per-service reference
+├── CLAUDE.md            # entry point for AI coding agents → points to docs/
 ├── docker-compose.yml   # api + ui, one command
 ├── LICENSE              # MIT
 └── README.md
 ```
+
+The [`docs/`](docs/) folder is a first-class part of this template: it captures
+how the code is written and *why* it's built this way, for both human
+contributors and coding agents. See [Documentation](#documentation) below.
 
 ![Chatbot page](docs/screenshots/chatbot.png)
 
