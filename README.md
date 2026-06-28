@@ -24,12 +24,12 @@ The [`docs/`](docs/) folder is a first-class part of this template: it captures
 how the code is written and *why* it's built this way, for both human
 contributors and AI coding agents. See [Documentation](#documentation) below.
 
-![Chatbot page](docs/screenshots/chatbot.png)
+![Chatbot page](https://raw.githubusercontent.com/guyfrishman/ai-fullstack-template/main/docs/screenshots/chatbot.png)
 
 <details>
 <summary>More screenshots</summary>
 
-![About page](docs/screenshots/about.png)
+![About page](https://raw.githubusercontent.com/guyfrishman/ai-fullstack-template/main/docs/screenshots/about.png)
 
 </details>
 
